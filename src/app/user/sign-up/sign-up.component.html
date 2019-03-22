@@ -1,0 +1,45 @@
+<form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+    <div class="example-container">  
+
+      <mat-form-field   >
+        <input matInput type="text" #fullName="ngModel" [(ngModel)]="_userService.selectedUser.fullName" name="fullName" placeholder="Nombre completo" 
+        required [ngClass]="{'invalid-textbox':signUpForm.submitted && !fullName.valid}">
+        <div *ngIf="signUpForm.submitted && !fullName.valid">
+            <label class="validation-message">This field is required</label>
+        </div>
+       
+      </mat-form-field>
+
+      <mat-form-field>
+        <input  type="text" #email="ngModel" [(ngModel)]="_userService.selectedUser.email" name="email" placeholder="Email" matInput 
+        required [pattern]="emailRegex">
+         <div *ngIf="signUpForm.submitted && email.errors">
+           <label *ngIf="email.errors.required" class="validation-message">This field is required</label>
+           <label *ngIf="email.errors.pattern"  class="validation-message">Invalid email address</label>
+         </div>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input  type="text" #password="ngModel" [(ngModel)]="_userService.selectedUser.password" name="password" placeholder="Contraseña" matInput 
+        required minlength="4" [ngClass]="{'invalid-textbox' : signUpForm.submitted && !password.valid}">
+          <div *ngIf="signUpForm.submitted && password.errors"> 
+            <label *ngIf="password.errors.required"  class="validation-message">This field is required</label>
+            <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters</label>
+          </div>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button color="primary">Registrar</button>
+      
+    </div>
+</form>
+
+<div class="success" *ngIf="showSucessMessage">
+   Save successfully
+</div>
+
+<div class="alert" *ngIf="serverErrorMessages">
+  {{serverErrorMessages}}
+</div>
+
+
+ 
