@@ -4,24 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* BASIC */
-
-input[type=text].invalid-textbox,input[type=password].invalid-textbox{
-    border-bottom: 2px solid #ed5558;
-    }
-    
-    label.validation-message{
-      color:#ed5558;
-      font-size: 60%;
-    }
-    .success{
-        padding: 15px;
-        background-color:#249424; /* Green */
-        color: white;
-        margin-bottom: 15px;
-      }
-      .alert {
-        padding: 20px;
-        background-color: #f44336; /* Red */
-        color: white;
-        margin-bottom: 15px;
-      }
+html,
+body{
+  height: 100%;
+}
+body{
+  margin:0;
+}
