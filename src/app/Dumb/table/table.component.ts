@@ -60,10 +60,10 @@ import { MatSort, MatPaginator } from '@angular/material';
 export class TableComponent implements OnInit {
   products: Array<Product> = [];
   listData:MatTableDataSource<any>;
-  displayedColumns:string[]=['productoID','descripcion','unidad_despacho'];
   @ViewChild(MatSort) sort:MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   @Input() datos:any[];
+  @Input() displayedColumns:string[];
   searchKey:string;
 
   constructor(private _product:ProductService) {
